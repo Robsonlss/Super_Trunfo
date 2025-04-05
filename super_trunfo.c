@@ -8,7 +8,13 @@ int main() {
     float area1, area2;// area das cidades
     float pib1, pib2;// pib das cidades
     int pontosturisticos1, pontosturisticos2;// numero de pontos turisticos
+    float densidadepopulacional1, densidadepopulacional2; //densidade populacional
+    float pibpercapita1, pibpercapita2; //pib per capita
 
+
+
+
+    // Cadastrando os dados da primeira carta
     printf("Digite os dados da primeira carta\n\n");
     printf("Digite o estado:\n");
     scanf(" %c", &estado1); 
@@ -66,7 +72,7 @@ int main() {
 
 
 
-    printf("Segunda carta:\n");//informacoes da segunda carta ja cadastrada
+    printf("Segunda carta:\n");
     printf("Estado: %c\n", estado2);
     printf("Código: %s\n", codigodacarta2);
     printf("Cidade: %s\n", nomedacidade2);
@@ -75,5 +81,45 @@ int main() {
     printf("PIB: %.2f bilhões de reais\n", pib2);
     printf("Pontos turísticos: %d\n", pontosturisticos2);
 
-    return 0;
+    if (populacao1 > populacao2) {
+        printf("carta %c venceu\n", estado1);
+    } else { 
+        printf("carta %c venceu\n", estado2);
+    }
+    if (area1 > area2 ) {
+        printf("carta %c venceu \n", estado1);
+    } else {
+        printf("carta %c venceu \n", estado2);    
+    }
+    
+    // Calcular a densidade populacional
+    densidadepopulacional1 = populacao1 / area1;
+    densidadepopulacional2 = populacao2 / area2;
+
+    
+    printf("A densidade populacional da carta %c é: %.2f\n", estado1, densidadepopulacional1);
+    printf("A densidade populacional da carta %c é: %.2f\n", estado2, densidadepopulacional2);
+    printf("Em densidade populacional\n");
+    // Comparar densidade populacional
+    if (densidadepopulacional1 < densidadepopulacional2) {
+        printf("Em densidade populacional\n");
+        printf("A carta %c venceu\n", estado1);
+    } else {
+        printf("A carta %c venceu\n", estado2);
+    }
+    // Calcular o PIB per capita
+    pibpercapita1 = pib1 / populacao1;
+    pibpercapita2 = pib2 / populacao2;
+   
+    printf("O PIB per capita da carta %c é: %.2f\n\n", estado1, pibpercapita1);
+    printf("O PIB per capita da carta %c é: %.2f\n\n", estado2, pibpercapita2);
+
+    // Comparar PIB per capita
+    printf("EM PIB per capita");
+    if (pibpercapita1 > pibpercapita2) {
+        printf("Resultado: A carta %c venceu\n", estado1);
+    } else {
+        printf("Resultado: A carta %c venceu\n", estado2);
+    }
 }
+
