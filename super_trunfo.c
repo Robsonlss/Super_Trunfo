@@ -92,6 +92,8 @@ int main() {
     printf("3 - PIB\n");
     printf("4 - Pontos turísticos\n");
     printf("5 - Densidade demografica\n");
+    printf("6 - Comparar dois atributos\n");
+    printf("Digite a opção desejada: ");
     scanf("%d", &opcao);
     switch (opcao) { // opcao de escolha do usuario
         case 1:
@@ -169,6 +171,63 @@ int main() {
                 printf("carta %c #*# venceu #*# \n", estado2);
             }
             break;
+        case 6: {
+            int atributo1, atributo2;
+            float valor1_carta1, valor1_carta2, valor2_carta1, valor2_carta2;
+
+            // Solicitar ao jogador os dois atributos para comparação
+            printf("Escolha o primeiro atributo:\n");
+            printf("1 - População\n");
+            printf("2 - Área\n");
+            printf("3 - PIB\n");
+            printf("4 - Pontos turísticos\n");
+            printf("5 - Densidade demográfica\n");
+            scanf("%d", &atributo1);
+
+            printf("Escolha o segundo atributo:\n");
+            printf("1 - População\n");
+            printf("2 - Área\n");
+            printf("3 - PIB\n");
+            printf("4 - Pontos turísticos\n");
+            printf("5 - Densidade demográfica\n");
+            scanf("%d", &atributo2);
+
+            // Obter os valores dos atributos escolhidos para cada carta
+            valor1_carta1 = (atributo1 == 1) ? populacao1 :
+                            (atributo1 == 2) ? area1 :
+                            (atributo1 == 3) ? pib1 :
+                            (atributo1 == 4) ? pontosturisticos1 : densidadepopulacional1;
+
+            valor1_carta2 = (atributo1 == 1) ? populacao2 :
+                            (atributo1 == 2) ? area2 :
+                            (atributo1 == 3) ? pib2 :
+                            (atributo1 == 4) ? pontosturisticos2 : densidadepopulacional2;
+
+            valor2_carta1 = (atributo2 == 1) ? populacao1 :
+                            (atributo2 == 2) ? area1 :
+                            (atributo2 == 3) ? pib1 :
+                            (atributo2 == 4) ? pontosturisticos1 : densidadepopulacional1;
+
+            valor2_carta2 = (atributo2 == 1) ? populacao2 :
+                            (atributo2 == 2) ? area2 :
+                            (atributo2 == 3) ? pib2 :
+                            (atributo2 == 4) ? pontosturisticos2 : densidadepopulacional2;
+
+            // Calcular a soma dos dois atributos para cada carta
+            float soma_carta1 = valor1_carta1 + valor2_carta1;
+            float soma_carta2 = valor1_carta2 + valor2_carta2;
+
+            // Determinar o vencedor
+            if (soma_carta1 > soma_carta2) {
+                printf("Carta %c venceu com a soma dos atributos: %.2f\n", estado1, soma_carta1);
+            } else if (soma_carta1 == soma_carta2) {
+                printf("Empate! Ambas as cartas têm a soma dos atributos: %.2f\n", soma_carta1);
+            } else {
+                printf("Carta %c venceu com a soma dos atributos: %.2f\n", estado2, soma_carta2);
+            }
+            break;
+        }
+        
         default:
             printf("Opção inválida!\n");
     }
